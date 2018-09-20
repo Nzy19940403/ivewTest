@@ -1,0 +1,361 @@
+*{
+    box-sizing:border-box;
+    outline: none;
+    padding: 0;
+    margin: 0;
+}
+a {
+    color: #2d8cf0;
+    background: 0 0;
+    text-decoration: none;
+    outline: 0;
+    cursor: pointer;
+    transition: color .2s ease;
+}
+#app{
+    margin: 5px;
+}
+.ivu-btn{
+    outline:0;
+    vertical-align: middle;
+    line-height: 1.5;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: 5px 15px 6px;
+    font-size: 12px;
+    border-radius: 4px;
+    transition: color .2s linear,background-color .2s linear,border .2s linear,box-shadow .2s linear;
+    color: #515a6e;
+    background-color: #fff;
+    border-color: #dcdee2;
+}
+.ivu-btn, .ivu-btn>.ivu-icon {
+    vertical-align: middle;
+    line-height: 1.5;
+}
+
+.ivu-icon {
+    display: inline-block;
+    /* speak: none; */
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    text-rendering: auto;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    vertical-align: middle;
+    height: 20px;
+    width:20px;
+    color:#666;
+}
+
+
+
+.ivu-input-wrapper{
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    vertical-align: middle;
+    line-height: normal;
+    position: relative;
+    margin-bottom:10px;
+}
+.ivu-input {
+    font-family: '微软雅黑';
+    display: inline-block;
+    width: 100%;
+    height: 32px;
+    line-height: 1.5;
+    padding: 4px 7px;
+    font-size: 12px;
+    border: 1px solid #dcdee2;
+    border-radius: 4px;
+    color: #515a6e;
+    background-color: #fff;
+    background-image: none;
+    position: relative;
+    cursor: text;
+    transition: border .2s ease-in-out,box-shadow .2s ease-in-out;
+}
+textarea.ivu-input{
+    max-width: 100%;
+    height: auto;
+    min-height: 32px;
+    vertical-align: bottom;
+    font-size: 14px;
+}
+.ivu-input:focus{
+    border:1px solid rgb(121, 178, 239);
+    box-shadow:  0px 0px 4px 2px rgb(121, 178, 239,.5);
+
+}
+/* .ive-input-textarea{
+    height:100px;
+} */
+.ivu-input-wrapper-large{
+    width: 100%;
+}
+.ivu-input-wrapper-small{
+    width: 200px;
+}
+.ivu-input-wrapper-default{
+    width: 300px;
+}
+
+.ivu-input-suffix{
+    position: absolute;
+    top: 0px;
+    height: 32px;
+    right: 0px;
+    width: 32px;
+    line-height: 32px;
+    text-align: center;
+    z-index: 10;
+}
+.ivu-input-perfix{
+    position: absolute;
+    top: 0px;
+    height: 32px;
+    left: 0px;
+    width: 32px;
+    line-height: 32px;
+    text-align: center;
+    z-index: 10;
+}
+.ivu-input[disabled], fieldset[disabled] .ivu-input{
+    background-color: #f3f3f3;
+    opacity: 1;
+    cursor: not-allowed;
+    color: #ccc;
+    border-color: #dcdee2 !important;
+}
+.ivu-input:hover{
+    border-color: rgb(121, 178, 239);
+}
+.input-inner-wrapper{
+    position: relative;
+}
+.clear-icon{
+    position: absolute;
+    top: 0px;
+    right:0px;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    line-height: 32px;
+    background:transparent;
+
+}
+.ivu-input-group {
+    display: table;
+    width: 100%;
+    border-collapse: separate;
+    position: relative;
+    font-size: 14px;
+
+}
+.ivu-input-group .ivu-input-group-append{
+    border-radius: 0px 4px 4px 0px ;  
+    border-left: 0;
+}
+.ivu-input-group .ivu-input-group-prepend {
+    border-right: 0;
+    border-radius: 4px 0px 0px 4px;
+}
+.ivu-input-group-append, .ivu-input-group-prepend {
+    padding: 0;
+    font-size: inherit;
+    font-weight: 400;
+    color: #515a6e;
+    text-align: center;
+    background-color: #f8f8f9;
+    border: 1px solid #dcdee2;
+    cursor: default;
+    line-height: 1;
+}
+.ivu-input-group-append, .ivu-input-group-prepend {
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+
+.ivu-input-group-with-append .ivu-input{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.ivu-input-group-with-prepend .ivu-input{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.ivu-input-group-append, .ivu-input-group-prepend, .ivu-input-group>.ivu-input {
+    display: table-cell;
+}
+.ivu-input-group-append .ivu-btn {
+    background: transparent;
+    width: 100%;
+    border: 0;
+    padding: 0px;
+}
+.search-btn{
+    display: table-cell;
+    font-size: inherit;
+    font-weight: 400;
+    color: #515a6e;
+    text-align: center;
+    background-color: #f8f8f9;
+    border: 1px solid #dcdee2;
+    cursor: default;
+    line-height: 1;
+}
+.ivu-input-search {
+    cursor: pointer;
+    padding: 0 16px!important;
+    background: #2d8cf0!important;
+    color: #fff!important;
+    border-color: #2d8cf0!important;
+    transition: all .2s ease-in-out;
+    position: relative;
+    z-index: 2;
+    position: relative;
+    left: -2px;
+}
+.ivu-input-group-prepend>i,
+.ivu-input-group-append>i{
+    line-height: 1.5;
+}
+
+/* dropdown/////////////////////////////////////////////////// */
+.ivu-dropdown{
+    display: inline-block;
+}
+.ivu-dropdown-menu{
+    min-width: 100px;
+}
+.ivu-dropdown-item {
+    margin: 0;
+    line-height: normal;
+    padding: 7px 16px;
+    clear: both;
+    color: #515a6e;
+    font-size: 12px!important;
+    white-space: nowrap;
+    list-style: none;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+}
+.ivu-select-dropdown {
+    width: inherit;
+    max-height: 200px;
+    overflow: auto;
+    margin: 5px 0;
+    padding: 5px 0;
+    background-color: #fff;
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 1px 6px rgba(0,0,0,.2);
+    position: absolute;
+    z-index: 900;
+}
+.ivu-dropdown-rel{
+    position: relative;
+}
+
+/* inputnumber/////////////////////////////////////////////// */
+.ivu-input-number {
+    display: inline-block;
+    width: 100%;
+    line-height: 1.5;
+    padding: 4px 7px;
+    font-size: 12px;
+    color: #515a6e;
+    background-color: #fff;
+    background-image: none;
+    position: relative;
+    cursor: text;
+    transition: border .2s ease-in-out,background .2s ease-in-out,box-shadow .2s ease-in-out;
+    margin: 0;
+    padding: 0;
+    width: 80px;
+    height: 32px;
+    line-height: 32px;
+    vertical-align: middle;
+    border: 1px solid #dcdee2;
+    border-radius: 4px;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+.ivu-input-number-handler-wrap>div{
+    height: 50%;
+    width:100%;
+    padding:0px;
+    position:absolute;
+    /* border-left: 1px solid #dcdee2; */
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+}
+.ivu-input-number-handler-wrap {
+    width: 22px;
+    height: 100%;
+    border-left: 1px solid #dcdee2;
+    border-radius: 0 4px 4px 0;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+}
+.ivu-input-number-input-wrap {
+    overflow: hidden;
+    height: 32px;
+}
+.ive-inputnumber-up-btn{
+    top: 0px;
+    border-bottom: 1px solid #dcdee2;
+}
+.ive-inputnumber-down-btn{
+    bottom: 0px;
+}
+.ivu-input-number-input{
+    width: 100%;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 7px;
+    text-align: left;
+    outline: 0;
+    -moz-appearance: textfield;
+    color: #666;
+    border: 0;
+    border-radius: 4px;
+    transition: all .2s linear;
+   
+}
+.ivu-input-number:hover{
+    border-color: rgb(121, 178, 239);
+   
+}
+.ivu-input-number:hover .ivu-input-number-handler-wrap {
+    opacity:1;
+    z-index: 10;
+}
+
+.ivu-input-number-handler-wrap>div:hover i{
+    color: rgb(121, 178, 239);
+}

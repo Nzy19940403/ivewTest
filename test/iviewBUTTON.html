@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>button</title>
+    <script src="../dist/vue.js"></script>
+    <script src="src/js/utils.js"></script>
+    <script src="src/js/components/ivew.js"></script>
+
+    <link rel="stylesheet" href="src/fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="src/css/ivbutton.css">
+</head>
+<body>
+    <div id="app">
+        <n-button iconcls="fa-plus" icon-align="top">123</n-button>
+        <n-button iconcls="fa-plus" ></n-button>
+        <n-button @click="tellTime"></n-button>
+        <n-button>123</n-button>
+        <br><br><br>
+    </div>
+    
+</body>
+</html>
+<script>
+    vm1=new Vue({
+        el:'#app',
+        data:{
+       
+        },
+        methods:{
+            tellTime:function(){
+                var time=new Date();
+                alert(time)
+            }
+        }
+    })
+    
+</script>

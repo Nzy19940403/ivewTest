@@ -1,0 +1,78 @@
+.btn {
+    min-width: 70px;
+}
+
+.l-btn{
+    text-decoration: none;
+    display: inline-block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    vertical-align: middle;
+    line-height: normal;
+    position: relative;
+
+    color: #404040;
+    background: #fafafa;
+    background-repeat: repeat-x;
+    border: 1px solid #dfdfdf;
+    -moz-border-radius: 4px 4px 4px 4px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    border-radius: 4px 4px 4px 4px;
+}
+.l-btn-text{
+    display: inline-block;
+    vertical-align: top;
+    width: auto;
+    line-height: 28px;
+    font-size: 14px;
+    padding: 0;
+    margin: 0 6px;
+}
+.l-btn-icon{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    position: absolute;
+    top: 50%;
+    margin-top: -8px;
+    font-size: 1px;
+
+}
+.l-btn-disabled,
+.l-btn-disabled:hover {
+  opacity: 0.5;
+  cursor: default;
+  background: #fafafa;
+  color: #404040;
+}
+.l-btn-plain {
+    border-width: 0;
+    padding: 1px;
+}
+
+
+
+
+
+
+.l-btn-icon-left .l-btn-text {
+    margin: 0 6px 0 26px;
+}
+.l-btn-icon-left .l-btn-icon{
+    left:9px;
+}
+
+
+.l-btn-icon-right .l-btn-text {
+    margin: 0 26px 0 6px;
+}
+.l-btn-icon-right .l-btn-icon {
+    right: 9px;
+}
+
+

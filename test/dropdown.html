@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dropdown</title>
+    <script src="../dist/vue.js"></script>
+    <script src="src/js/utils.js"></script>
+    <script src="src/js/components/ivew.js"></script>
+    
+
+    <link rel="stylesheet" href="src/fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="src/css/ivbutton.css">
+ 
+</head>
+<body>
+    <div id="app">
+        <n-dropdown>
+            <n-button iconcls="fa-angle-down">mytest</n-button>
+            <n-dropdownmenu slot="list">
+                <n-dropdownitem>你好1</n-dropdownitem>
+                <n-dropdownitem>你好2</n-dropdownitem>
+                <n-dropdownitem>你好3</n-dropdownitem>
+            </n-dropdownmenu>
+        </n-dropdown>
+       
+        <n-dropdown style="margin-left: 40px;" trigger="click">
+            <n-button iconcls="fa-angle-down">mytest</n-button>
+            <n-dropdownmenu slot="list">
+                <n-dropdownitem>你好1</n-dropdownitem>
+                <n-dropdownitem>你好2</n-dropdownitem>
+                <n-dropdownitem>你好3</n-dropdownitem>
+            </n-dropdownmenu>
+        </n-dropdown>
+    </div>
+</body>
+</html>
+<script>
+    vm=new Vue({
+        el:"#app",
+        data:{
+
+        },
+        methods:{
+            
+        }
+    })
+</script>

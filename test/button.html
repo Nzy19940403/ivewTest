@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../dist/vue.js"></script>
+    <script src="src/js/button.js"></script>
+
+    <link rel="stylesheet" href="src/fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="src/css/1.css">
+    
+</head>
+<body>
+
+<div id="app" >
+    <mytest :message=message @changemsg="myts($event)" @change="myts2($event)" ></mytest>
+</div>
+
+<script>
+var dad={
+    template:   '<div style="border:1px solid #666;padding:10px;">'+
+                    '<kk :message="message"></kk>'+
+                    '<linkbutton iconCls="fa-plus" @click="changemsg($event)">add</linkbutton>'+
+                    '<linkbutton iconCls="fa-refresh" :plain=true @click="change($event)">refresh</linkbutton>'+
+                    '<linkbutton iconCls="fa-user" :disable=true >user</linkbutton>'+
+                '</div>',
+    // data: function(){
+    //     return{
+    //         message:'Plusoft'
+    //     }
+    // },
+    props:['message'],
+
+    components:{
+        kk:{
+            props:['message'],
+            template:'<div><p>{{message}}</p><p>{{newmessage}}</p></div>',
+            computed:{
+                newmessage:function(){
+                   return this.message.split('').reverse().join('')
+                }
+            }
+         
+        }
+    },
+    methods:{
+        changemsg:function(){  
+           //this.message=this.message.split('').reverse().join('')
+     
+           this.$emit('changemsg','test') 
+        },
+        change:function(){
+            this.$emit('changemsg','nzy') 
+        }
+    },
+    
+}
+
+var mytest={
+    template:   '<div>'+
+                '<linkbutton @click="mytest()" :toggle=true>父组件中的按钮</linkbutton>'+
+                '<dad :message=message @changemsg="myts($event)"></dad>'+
+                '</div>',
+    components:{
+        'dad':dad
+    },
+    props:['message'],
+    // data:function(){
+    //     return{
+    //         message:message
+    //     }
+    // }
+    methods:{
+        mytest:function(){
+            this.$emit('change') 
+           
+        },
+        myts:function(msg){
+        
+            this.$emit('changemsg',msg) 
+        },
+    }
+    
+}
+var vm=new Vue({
+    el: '#app',
+    components:{
+        'mytest':mytest,
+    },
+    data:{
+        message:'mmp'
+    },
+    methods:{
+        myts:function(msg){
+            this.message=msg;
+        },
+        myts2:function(){
+            this.message=this.message.split('').reverse().join('');
+        }
+    }
+    
+
+})
+
+
+</script>
+</body>
+</html>

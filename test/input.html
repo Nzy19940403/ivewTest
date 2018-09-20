@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>input</title>
+    <script src="../dist/vue.js"></script>
+    <script src="src/js/utils.js"></script>
+    <!-- <script src="src/js/components/icon.js"></script> -->
+    <script  src="src/js/components/ivew.js"></script>
+
+    <link rel="stylesheet" href="src/fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="src/css/ivbutton.css">
+</head>
+<body>
+    <div id="app">
+        <n-input style="width:500px;" placeholder="禁用" disabled></n-input>
+        <n-input size="small" type="password" clearable value="kk" v-focus ></n-input>
+        <n-input size="default" suffix="fa-user-circle-o" clearable :number="true"></n-input>
+        <n-input icontext="Search" type="url"  perfix="fa-ravelry" placeholder="Enter something" clearable readonly></n-input>
+        <n-input size="large" type="textarea" placeholder="Enter something" clearable :rows="6"></n-input>
+        <n-input size="large" type="textarea" placeholder="Enter something" clearable ></n-input>
+       
+        <n-input  clearable type="url" placeholder="Enter link">
+            <span slot="prepend">http://</span>
+            <span slot="append">.com</span>
+        </n-input>
+        <n-input style="width:400px" clearable type="url" value="kkk" >
+            <n-button @click="test($event)"  iconcls="fa-search"slot="append">search</n-button>
+            <icon slot="prepend" iconcls="fa-plus"></icon>
+        </n-input>
+       <n-input style="width:400px;" clearable placeholder="Enter something" search enter-button="mytest" @on-search="testfn"></n-input>
+
+
+        <br><br><br>
+    </div>
+</body>
+</html>
+<script>
+    vm2=new Vue({
+        el:'#app',
+        data:{
+       
+        },
+        methods:{
+            test:function(event){
+                alert(event.currentTarget.offsetParent.__vue__.currentValue)
+            },
+            testfn:function(n){
+                alert(n)
+            }
+        },
+        directives:{
+            focus:{
+                inserted: function (el) {
+                    // 聚焦元素
+                    el.__vue__.$refs.myinput.focus()
+                }
+            }
+        },
+    })  
+
+
+</script>
