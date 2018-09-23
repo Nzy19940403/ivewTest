@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title></title>
+    <script src="../../dist/vue.js"></script>
+    <script src="../src/js/utils.js"></script>
+    <script src="../src/js/components/ivew.js"></script>
+    <script src="../src/js/components/table.js"></script>
+
+    <link rel="stylesheet" href="../src/fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../src/css/ivbutton.css">
+</head>
+       
+<body>
+    <div id='app'>
+        <div>
+            <n-button @click="addNewData">新增</n-button>
+        </div>
+        <br>
+        <!-- <n-table :columns="columns" :data="data" :editable="['name','company','age']" :height="290"></n-table> -->
+        <n-table :columns="columns" :data="data" :editable="['name','company','age']"></n-table>
+    </div>
+</body>
+</html>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            columns:[
+                {
+                    title:'Name',
+                    key:'name',
+              
+                },
+                {
+                    title:'Age',
+                    key:'age'
+                },
+                {
+                    title:'Job',
+                    key:'job'
+                },
+                {
+                    title:'Company',
+                    key:'company'
+                },
+                {
+                    title:'Dept',
+                    key:'department'
+                },
+                {
+                    title:'Address',
+                    key:'address'
+                },
+                
+            ],
+            data:[
+                {
+                    name:'朱小姐',
+                    age:21,
+                    job:'运维工程师',
+                    company:'阿里巴巴',
+                    department:'技术部',
+                    address:'杭州'
+                },
+                {
+                    name:'董小姐',
+                    age:33,
+                    job:'推荐算法工程师',
+                    company:'腾讯',
+                    department:'技术部',
+                    address:'深圳'
+                },
+                {
+                    name:'alisa',
+                    age:27,
+                    job:'流量专家',
+                    company:'英语流利说',
+                    department:'市场与销售部',
+                    address:'上海'
+                },
+                {
+                    name:'wuyujin',
+                    age:36,
+                    job:'品控主管',
+                    company:'dada英语',
+                    department:'运营部',
+                    address:'上海'
+                },
+                {
+                    name:'susan',
+                    age:28,
+                    job:'招聘经理',
+                    company:'蛋壳租房',
+                    department:'人事部',
+                    address:'上海'
+                },
+                {
+                    name:'tracy',
+                    age:30,
+                    job:'UI设计师',
+                    company:'爱客CRM',
+                    department:'设计部',
+                    address:'上海'
+                },
+                {
+                    name:'张大神',
+                    age:35,
+                    job:'资深前端专家',
+                    company:'阿里体育',
+                    department:'技术部',
+                    address:'上海'
+                },
+                {
+                    name:'Lee',
+                    age:27,
+                    job:'内容运营主管',
+                    company:'沪江',
+                    department:'运营部',
+                    address:'上海'
+                },
+            ],
+        },
+        methods: {
+            addNewData:function(){
+                alert(1)
+            }
+        }
+})
+
+</script>

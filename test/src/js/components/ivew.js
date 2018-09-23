@@ -633,8 +633,13 @@ let Ninputnumber = Vue.extend({
 
             this.changeStep('up', e);
         },
-        down:function(){
-            alert('down')
+        down:function(e){
+            const targetVal = Number(e.target.value);
+            if (this.upDisabled && isNaN(targetVal)) {
+                return false;
+            }
+
+            this.changeStep('down', e);
         },
         focus (event) {
             this.focused = true;
