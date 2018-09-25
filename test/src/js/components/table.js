@@ -21,19 +21,20 @@ let Ntable=Vue.extend({
     template:   '<div class="ivu-table-wrapper" :style="wrapperStyles">'+
                     '<div :class="classes">'+
                         '<div class="ivu-table-header" v-if="showHeader">'+
-                            '<n-tablehead :columns="columns"></n-tablehead>'+
+                            '<n-tablehead :columns="columns" :allowSort="sortable" @sort-down="sortDown($event)"></n-tablehead>'+
                         '</div>'+
                         '<div class="ivu-table-body">'+
-                            '<n-tablebody :data="data" :editable="editable"></n-tablebody>'+
+                            '<n-tablebody :data="data" :editable="editable" ref="tbody"></n-tablebody>'+
                         '</div>'+
-                        '<div v-if="showPage" class="ivu-page-wrapper">'+
+                        '<div v-if="showPage" class="ivu-page-wrapper" >'+
                             '<n-page></n-page>'+
                         '</div>'+
                     '</div>'+
                 '</div>',
     data(){
         return{
-            currentHeight:this.height
+            currentHeight:this.height,
+            
         }
     },
     props:{
@@ -57,7 +58,8 @@ let Ntable=Vue.extend({
             type:[String,Boolean,Array],
             default:false
         },
-        height:Number   
+        height:Number,
+        sortable:Boolean 
     },
     computed:{
         classes:function(){
@@ -79,14 +81,25 @@ let Ntable=Vue.extend({
         },
         
     },
+    methods:{
+        sortDown:function(e){
+            let t=e.currentTarget.parentElement.previousSibling.innerText;
+            let tbody=this.$refs.tbody;
+
+           // tbody.currentData=sortKey(tbody.currentData,t)
+            
+            console.log(tbody.currentData)
+        }
+    },
     watch:{
         
     },
     mounted(){
-        if(this.currentHeight&&showHeader){
+       
+        if(this.currentHeight&&this.showHeader){
             let header=this.$el.children[0].children[0],
             body=this.$el.children[0].children[1];
-            if(showPage){
+            if(this.showPage){
                 let page=this.$el.children[0].children[2];
                 body.style.height=this.currentHeight-header.offsetHeight-page.offsetHeight+'px'
             }else{
@@ -120,6 +133,10 @@ let Ntablehead=Vue.extend({
                                     '</template>'+
                                     '<template v-else>'+
                                         '<span>{{item.title}}</span>'+
+                                        '<div class="sort-btn" v-if="item.sortable&&allowSort">'+
+                                            '<icon iconcls="fa-angle-down" @click.native.stop="sortDown($event)"></icon>'+
+                                            '<icon iconcls="fa-angle-up"></icon>'+
+                                        '</div>'+
                                     '</template>'+
                                 '</div>'+
                             '</th>'+
@@ -132,7 +149,8 @@ let Ntablehead=Vue.extend({
         }
     },
     props:{
-        columns:[Array,Object]
+        columns:[Array,Object],
+        allowSort:Boolean
     },
     computed:{
         tableCellCls:function(column){
@@ -151,7 +169,9 @@ let Ntablehead=Vue.extend({
         }
     },
     methods:{
-        
+        sortDown:function(e){
+            this.$emit('sort-down',e)
+        }
     }
 });
 
@@ -208,7 +228,15 @@ let Ntablebody=Vue.extend({
             }
             
         },
-        
+        // currentData:{
+        //     get:function(){
+        //         return this.currentData
+        //     },
+        //     set:function(n){
+        //         this.currentData=n
+        //     }
+            
+        // }
         
 
        
@@ -235,8 +263,13 @@ let Ntablebody=Vue.extend({
         
         
     },
+    watch:{
+       currentData:function(){
+           console.log(666)
+       }
+    },
     mounted() {
-    
+        
     },
 });
 
@@ -331,16 +364,58 @@ let Npage=Vue.extend({
     name:'Npage',
     template:   '<ul class="ivu-page">'+
                     '<span v-if="showTotal"></span>'+
-                    '<li class="ivu-page-prev"><icon iconcls="fa-angle-left"></icon></li>'+
-                    '<li class="ivu-page-next"><icon iconcls="fa-angle-right"></icon></li>'+
+                    '<li class="ivu-page-prev" @click="prev"><icon iconcls="fa-angle-left"></icon></li>'+
+                    '<li title="1" :class="firstPageClasses" @click="changePage(1)"><a>1</a></li>'+
+                    '<li class="ivu-page-next" @click="next"><icon iconcls="fa-angle-right"></icon></li>'+
+                    
                 '</ul>',
     
     props:{
         showTotal:{
             type: Boolean,
             default: false
+        },
+        pageSize: {
+            type: Number,
+            default: 10
+        },
+    },
+    data () {
+        return {
+            currentPageSize: this.pageSize
+        };
+    },
+    computed:{
+        firstPageClasses:function(){
+            return[
+                'ivu-page-item',
+                {
+                    ['ivu-page-item-active']:this.currentPage===1
+                }
+            ]
+        }
+    },
+    methods:{
+        prev:function(){
+            alert('prev')
+        },
+        next:function(){
+            alert('next')
+        },
+        changePage:function(){
+            
         }
     }
 })
 
-Vue.component('n-page',Npage)
+Vue.component('n-page',Npage);
+
+
+
+// function sortKey(array,key){
+//             return array.sort(function(a,b){
+//             var x = a[key];
+//             var y = b[key];
+//             return ((x<y)?-1:(x>y)?1:0)
+//         })
+//     }

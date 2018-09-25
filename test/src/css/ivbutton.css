@@ -491,3 +491,57 @@ textarea.ivu-input{
     border-radius: 4px;
     transition: all .2s ease-in-out;
 }
+.ivu-page-wrapper .ivu-page::before, .ivu-page-wrapper:before {
+    content: "";
+    position: absolute;
+    z-index: 10;
+    width: 1px;
+    height: 100%;
+}
+.ivu-page-wrapper:before{
+
+    left: 0px;
+    
+    background-color: #fff;
+}
+.ivu-page-wrapper .ivu-page::before{
+    right: 0px;
+    z-index: 10;
+    background-color: #fff;
+}
+.ivu-page-item {
+    display: inline-block;
+    vertical-align: middle;
+    min-width: 32px;
+    height: 32px;
+    line-height: 30px;
+    margin:0px 4px;
+    text-align: center;
+    list-style: none;
+    background-color: #fff;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    font-family: Arial;
+    font-weight: 500;
+    border: 1px solid #dcdee2;
+    border-radius: 4px;
+    transition: border .2s ease-in-out,color .2s ease-in-out;
+}
+thead .ivu-table-cell span{
+    display: inline-block
+}
+thead .ivu-table-cell .sort-btn{
+    display: inline-block;
+    margin-left: 4px;
+}
+thead .ivu-table-cell .sort-btn i{
+    text-align: center;
+    line-height: 1.5;
+    opacity: 0;
+}
+thead .ivu-table-cell:hover .sort-btn i{
+    opacity: 1;
+}

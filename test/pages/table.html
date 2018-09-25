@@ -21,7 +21,7 @@
         </div>
         <br>
         <!-- <n-table :columns="columns" :data="data" :editable="['name','company','age']" :height="290"></n-table> -->
-        <n-table :columns="columns" :data="data" :editable="['name','company','age']"></n-table>
+        <n-table :columns="columns" :data="data" :editable="['name','company','age']"sortable></n-table>
     </div>
 </body>
 </html>
@@ -37,7 +37,8 @@
                 },
                 {
                     title:'Age',
-                    key:'age'
+                    key:'age',
+                    sortable:true
                 },
                 {
                     title:'Job',
