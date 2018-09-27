@@ -34,7 +34,7 @@ let Ntable=Vue.extend({
     data(){
         return{
             currentHeight:this.height,
-            
+            rebuildData:[]
         }
     },
     props:{
@@ -181,7 +181,7 @@ let Ntablebody=Vue.extend({
     name:'Ntablebody',
     template:   '<table>'+
                     '<tbody class="ivu-table-tbody" ref="mytablebody">'+
-                        '<n-tr v-for="(item,index) in currentData" class="ivu-table-row" :row="item" :rowIndex="index" :key="item._rowKey"'+
+                        '<n-tr v-for="(item,index) in currentData" class="ivu-table-row" :row="item"  :key="index"'+
                         ' @mouseenter.native.stop="handleMouseIn(index)" @mouseleave.native.stop="handleMouseOut(index)" >'+
                             
                             '<td v-for="(value,key,index) in item" @click="handleClick($event)">'+

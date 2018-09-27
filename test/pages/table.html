@@ -17,11 +17,12 @@
 <body>
     <div id='app'>
         <div>
-            <n-button @click="addNewData">新增</n-button>
+            <n-button @click="addData">新增</n-button>
+            <n-button @click="removeData">删除</n-button>
         </div>
         <br>
         <!-- <n-table :columns="columns" :data="data" :editable="['name','company','age']" :height="290"></n-table> -->
-        <n-table :columns="columns" :data="data" :editable="['name','company','age']"sortable></n-table>
+        <n-table :columns="columns" :data="data" :editable="['name','company','age']" sortable></n-table>
     </div>
 </body>
 </html>
@@ -126,10 +127,222 @@
             ],
         },
         methods: {
-            addNewData:function(){
-                alert(1)
+            addData:function(){
+                this.data.push({
+                    name:'Lee',
+                    age:27,
+                    job:'内容运营主管',
+                    company:'沪江',
+                    department:'运营部',
+                    address:'上海'
+                })
+              
+            },
+            removeData:function(){
+
+                for(let i=0;i<this.data.length;i++){
+                    if(this.data[i]!==null){
+                        this.$set(this.data,i,null);
+                        break
+                    }
+                }
+                
+                
+                // this.data.splice(0,1);
+                // console.log(this.data)
+                
             }
         }
 })
 
 </script>
+
+<!-- <script>
+    Vue.component('vTable', {
+    props: {
+        columns: {
+            type: Array,
+            default: function () {
+                return [];
+            }
+        },
+        data: {
+            type: Array,
+            default: function () {
+                return [];
+            }
+        }
+    },
+
+    
+    data() {
+        return {
+            currentColumns: [],
+            currentData: []
+        }
+    },
+    render(h) {
+        var _this = this;
+        var ths = [];
+        this.currentColumns.forEach(function (col, index) {
+            if (col.sortable) {
+                ths.push(h('th', [
+                    h('span', col.title),
+                    //升序
+                    h('a', {
+                        class: {
+                            on: col._sortType === 'asc'
+                        },
+                        on: {
+                            click: function () {
+                                _this.handleSortByAsc(index);
+                            }
+                        }
+                    }, '↑'),
+                    //降序
+                    h('a', {
+                        class: {
+                            on: col._sortType === 'desc'
+                        },
+                        on: {
+                            click: function () {
+                                _this.handleSortByDesc(index);
+                            }
+                        }
+                    }, '↓')
+                ]))
+            } else {
+                ths.push(h('th', col.title));
+            }
+        });
+        var trs = [];
+        this.currentData.forEach(function (row) {
+            var tds = [];
+            _this.currentColumns.forEach(function (cell) {
+                tds.push(h('td', row[cell.key]));
+            });
+            trs.push(h('tr', tds));
+        });
+        return h('table', [
+            h('thead', [
+                h('tr', ths)
+            ]),
+            h('tbody', trs)
+        ])
+    },
+    methods: {
+        makeColumns: function () {
+            this.currentColumns = this.columns.map(function (col, index) {
+                //添加一个字段标识当前列排序的状态，后面使用
+                col._sortType = 'normal';
+                //添加一个字段标识当前列在数组中的索引，后面使用
+                col._index = index;
+                return col;
+            })
+        },
+        makeData: function () {
+            this.currentData = this.data.map(function (row, index) {
+                //添加一个字段标识当前行在数组中的索引，后续使用
+                row._index = index;
+                return row;
+            })
+        },
+        handleSortByAsc: function (index) {
+            var key = this.currentColumns[index].key;
+            this.currentColumns.forEach(function (col) {
+                col._sortType = 'normal';
+            });
+            this.currentColumns[index]._sortType = 'asc';
+            this.currentData.sort(function (a, b) {
+                return a[key] > b[key] ? 1 : -1;
+            })
+        },
+        handleSortByDesc: function (index) {
+            var key = this.currentColumns[index].key;
+            this.currentColumns.forEach(function (col) {
+                col._sortType = 'normal';
+            });
+            this.currentColumns[index]._sortType = 'desc';
+            this.currentData.sort(function (a, b) {
+                return a[key] < b[key] ? 1 : -1;
+            })
+        }
+    },
+    watch: {
+        data() {
+            this.makeData();
+            var sortedColumn = this.currentColumns.filter(function (col) {
+                return col._sortType !== 'normal';
+            });
+            if (sortedColumn.length > 0) {
+                if (sortedColumn[0]._sortType === 'asc') {
+                    this.handleSortByAsc(sortedColumn[0]._index);
+                } else {
+                    this.handleSortByDesc(sortedColumn[0]._index);
+                }
+            }
+        }
+    },
+    mounted() {
+        //v-table初始化调用
+        this.makeColumns();
+        this.makeData();
+    }
+});
+new Vue({
+    el: "#app",
+    data: {
+        columns: [
+            {
+                title: '姓名',
+                key: 'name'
+            },
+            {
+                title: '年龄',
+                key: 'age',
+                sortable: true
+            }, {
+                title: '出生日期',
+                key: 'birthday',
+                sortable: true
+            }, {
+                title: '地址',
+                key: 'address'
+            }
+        ],
+        data: [
+            {
+                name: '王小明',
+                age: 18,
+                birthday: '1998-12-08',
+                address: '深圳市南山区粤海门村'
+            }, {
+                name: '王大富',
+                age: 28,
+                birthday: '1988-6-17',
+                address: '深圳市南山区西丽大学城'
+            }, {
+                name: '刑莉',
+                age: 24,
+                birthday: '1992-08-08',
+                address: '深圳市龙华区深圳北站'
+            }, {
+                name: '张智忠',
+                age: 36,
+                birthday: '1980-03-22',
+                address: '深圳市龙岗区龙城广场'
+            }
+        ]
+    },
+    methods: {
+        handleAddData: function () {
+            this.data.push({
+                name: '刘晓天',
+                age: 20,
+                birthday: '1997-05-20',
+                address: '深圳市宝安区宝安体育馆'
+            })
+        }
+    }
+});
+</script> -->
